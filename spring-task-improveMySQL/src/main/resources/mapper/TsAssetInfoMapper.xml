@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TsAssetInfoMapper">
+    <resultMap id="BaseResultMap" type="com.entity.TsAssetInfo">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="ts_borrower_info_id" jdbcType="INTEGER" property="ts_borrower_info_id"/>
+        <result column="ts_guarantee_info_id" jdbcType="INTEGER" property="ts_guarantee_info_id"/>
+        <result column="ts_project_info_id" jdbcType="INTEGER" property="ts_project_info_id"/>
+        <result column="ts_contract_info_id" jdbcType="INTEGER" property="ts_contract_info_id"/>
+        <result column="asset_code" jdbcType="VARCHAR" property="asset_code"/>
+        <result column="asset_name" jdbcType="VARCHAR" property="asset_name"/>
+        <result column="asset_type" jdbcType="VARCHAR" property="asset_type"/>
+        <result column="deal_no" jdbcType="VARCHAR" property="deal_no"/>
+        <result column="duebill_no" jdbcType="VARCHAR" property="duebill_no"/>
+        <result column="duebill_status" jdbcType="VARCHAR" property="duebill_status"/>
+        <result column="asset_amount" jdbcType="DECIMAL" property="asset_amount"/>
+        <result column="rate_type" jdbcType="CHAR" property="rate_type"/>
+        <result column="asset_rate" jdbcType="DECIMAL" property="asset_rate"/>
+        <result column="benchmark_rate" jdbcType="CHAR" property="benchmark_rate"/>
+        <result column="spread_rate" jdbcType="DECIMAL" property="spread_rate"/>
+        <result column="rate_float_type" jdbcType="VARCHAR" property="rate_float_type"/>
+        <result column="rate_change_type" jdbcType="VARCHAR" property="rate_change_type"/>
+        <result column="asset_status" jdbcType="VARCHAR" property="asset_status"/>
+        <result column="asset_sdate" jdbcType="CHAR" property="asset_sdate"/>
+        <result column="asset_edate" jdbcType="CHAR" property="asset_edate"/>
+        <result column="asset_term" jdbcType="VARCHAR" property="asset_term"/>
+        <result column="asset_repayment_type" jdbcType="VARCHAR" property="asset_repayment_type"/>
+        <result column="repayment_freq" jdbcType="VARCHAR" property="repayment_freq"/>
+        <result column="pay_date" jdbcType="CHAR" property="pay_date"/>
+        <result column="asset_balance" jdbcType="DECIMAL" property="asset_balance"/>
+        <result column="asset_balance_per" jdbcType="DECIMAL" property="asset_balance_per"/>
+        <result column="asset_purpose" jdbcType="VARCHAR" property="asset_purpose"/>
+        <result column="asset_guarantee" jdbcType="VARCHAR" property="asset_guarantee"/>
+        <result column="third_guarantee" jdbcType="CHAR" property="third_guarantee"/>
+        <result column="mortgage" jdbcType="CHAR" property="mortgage"/>
+        <result column="mortgage_rate" jdbcType="DECIMAL" property="mortgage_rate"/>
+        <result column="packed_date" jdbcType="CHAR" property="packed_date"/>
+        <result column="packed_balance" jdbcType="DECIMAL" property="packed_balance"/>
+        <result column="real_rate" jdbcType="DECIMAL" property="real_rate"/>
+        <result column="remain_term" jdbcType="DECIMAL" property="remain_term"/>
+        <result column="loan_way" jdbcType="CHAR" property="loan_way"/>
+        <result column="first_paydate" jdbcType="CHAR" property="first_paydate"/>
+        <result column="repayment_plan" jdbcType="VARCHAR" property="repayment_plan"/>
+        <result column="branch_bank" jdbcType="VARCHAR" property="branch_bank"/>
+        <result column="sub_branch_bank" jdbcType="VARCHAR" property="sub_branch_bank"/>
+        <result column="is_syndicated_loan" jdbcType="CHAR" property="is_syndicated_loan"/>
+        <result column="same_borrower" jdbcType="CHAR" property="same_borrower"/>
+        <result column="surety_name" jdbcType="VARCHAR" property="surety_name"/>
+        <result column="surety_money" jdbcType="DECIMAL" property="surety_money"/>
+        <result column="surety_type" jdbcType="VARCHAR" property="surety_type"/>
+        <result column="surety_trade" jdbcType="VARCHAR" property="surety_trade"/>
+        <result column="credit_level" jdbcType="VARCHAR" property="credit_level"/>
+        <result column="pawn_name" jdbcType="VARCHAR" property="pawn_name"/>
+        <result column="pawn_money" jdbcType="DECIMAL" property="pawn_money"/>
+        <result column="collateral_value" jdbcType="DECIMAL" property="collateral_value"/>
+        <result column="orderid" jdbcType="INTEGER" property="orderid"/>
+        <result column="inputuser" jdbcType="VARCHAR" property="inputuser"/>
+        <result column="crt_date" jdbcType="CHAR" property="crt_date"/>
+        <result column="crt_time" jdbcType="CHAR" property="crt_time"/>
+        <result column="upd_date" jdbcType="CHAR" property="upd_date"/>
+        <result column="upd_time" jdbcType="CHAR" property="upd_time"/>
+        <result column="bond_rating" jdbcType="VARCHAR" property="bond_rating"/>
+        <result column="isDelete" jdbcType="VARCHAR" property="isDelete"/>
+    </resultMap>
+
+
+    <insert id="insertTsAssetInfo" parameterType="com.entity.TsAssetInfo" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+
+        INSERT INTO ts_asset_info (
+            ts_borrower_info_id,
+            ts_guarantee_info_id,
+            ts_project_info_id,
+            ts_contract_info_id,
+            asset_code,
+            asset_name,
+            asset_type,
+            deal_no,
+            duebill_no,
+            duebill_status,
+            asset_amount,
+            rate_type,
+            asset_rate,
+            benchmark_rate,
+            spread_rate,
+            rate_float_type,
+            rate_change_type,
+            asset_status,
+            asset_sdate,
+            asset_edate,
+            asset_term,
+            asset_repayment_type,
+            repayment_freq,
+            pay_date,
+            asset_balance,
+            asset_balance_per,
+            asset_purpose,
+            asset_guarantee,
+            third_guarantee,
+            mortgage,
+            mortgage_rate,
+            packed_date,
+            packed_balance,
+            real_rate,
+            remain_term,
+            loan_way,
+            first_paydate,
+            repayment_plan,
+            branch_bank,
+            sub_branch_bank,
+            is_syndicated_loan,
+            same_borrower,
+            surety_name,
+            surety_money,
+            surety_type,
+            surety_trade,
+            credit_level,
+            pawn_name,
+            pawn_money,
+            collateral_value,
+            orderid,
+            inputuser,
+            crt_date,
+            crt_time,
+            upd_date,
+            upd_time,
+            bond_rating,
+            isDelete
+        ) VALUES(
+            #{ts_borrower_info_id},
+            #{ts_guarantee_info_id},
+            #{ts_project_info_id},
+            #{ts_contract_info_id},
+            #{asset_code},
+            #{asset_name},
+            #{asset_type},
+            #{deal_no},
+            #{duebill_no},
+            #{duebill_status},
+            #{asset_amount},
+            #{rate_type},
+            #{asset_rate},
+            #{benchmark_rate},
+            #{spread_rate},
+            #{rate_float_type},
+            #{rate_change_type},
+            #{asset_status},
+            #{asset_sdate},
+            #{asset_edate},
+            #{asset_term},
+            #{asset_repayment_type},
+            #{repayment_freq},
+            #{pay_date},
+            #{asset_balance},
+            #{asset_balance_per},
+            #{asset_purpose},
+            #{asset_guarantee},
+            #{third_guarantee},
+            #{mortgage},
+            #{mortgage_rate},
+            #{packed_date},
+            #{packed_balance},
+            #{real_rate},
+            #{remain_term},
+            #{loan_way},
+            #{first_paydate},
+            #{repayment_plan},
+            #{branch_bank},
+            #{sub_branch_bank},
+            #{is_syndicated_loan},
+            #{same_borrower},
+            #{surety_name},
+            #{surety_money},
+            #{surety_type},
+            #{surety_trade},
+            #{credit_level},
+            #{pawn_name},
+            #{pawn_money},
+            #{collateral_value},
+            #{orderid},
+            #{inputuser},
+            #{crt_date},
+            #{crt_time},
+            #{upd_date},
+            #{upd_time},
+            #{bond_rating},
+            #{isDelete}
+        );
+    </insert>
+
+</mapper>

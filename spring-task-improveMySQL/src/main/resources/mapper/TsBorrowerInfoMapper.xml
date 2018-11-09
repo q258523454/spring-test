@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TsBorrowerInfoMapper">
+    <resultMap id="BaseResultMap" type="com.entity.TsBorrowerInfo">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="deal_no" jdbcType="VARCHAR" property="deal_no"/>
+        <result column="borrower_name" jdbcType="VARCHAR" property="borrower_name"/>
+        <result column="borrower_type" jdbcType="VARCHAR" property="borrower_type"/>
+        <result column="id_type" jdbcType="VARCHAR" property="id_type"/>
+        <result column="id_no" jdbcType="VARCHAR" property="id_no"/>
+        <result column="sex" jdbcType="CHAR" property="sex"/>
+        <result column="birthday" jdbcType="CHAR" property="birthday"/>
+        <result column="borrower_age" jdbcType="VARCHAR" property="borrower_age"/>
+        <result column="marital_status" jdbcType="CHAR" property="marital_status"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="year_income" jdbcType="DECIMAL" property="year_income"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="province_code" jdbcType="VARCHAR" property="province_code"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="debt_income_per" jdbcType="DECIMAL" property="debt_income_per"/>
+        <result column="borrower_rating" jdbcType="VARCHAR" property="borrower_rating"/>
+        <result column="family_status" jdbcType="VARCHAR" property="family_status"/>
+        <result column="nationality" jdbcType="VARCHAR" property="nationality"/>
+        <result column="family_address" jdbcType="VARCHAR" property="family_address"/>
+        <result column="education_level" jdbcType="VARCHAR" property="education_level"/>
+        <result column="inputuser" jdbcType="VARCHAR" property="inputuser"/>
+        <result column="crt_date" jdbcType="CHAR" property="crt_date"/>
+        <result column="crt_time" jdbcType="CHAR" property="crt_time"/>
+        <result column="upd_date" jdbcType="CHAR" property="upd_date"/>
+        <result column="upd_time" jdbcType="CHAR" property="upd_time"/>
+        <result column="is_valid" jdbcType="CHAR" property="is_valid"/>
+        <result column="isDelete" jdbcType="CHAR" property="isDelete"/>
+    </resultMap>
+
+    <insert id="insertTsBorrowerInfo" parameterType="com.entity.TsBorrowerInfo" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO ts_borrower_info(
+            deal_no,
+            borrower_name,
+            borrower_type,
+            id_type,
+            id_no,
+            sex,
+            birthday,
+            borrower_age,
+            marital_status,
+            industry,
+            year_income,
+            province,
+            province_code,
+            address,
+            debt_income_per,
+            borrower_rating,
+            family_status,
+            nationality,
+            family_address,
+            education_level,
+            inputuser,
+            crt_date,
+            crt_time,
+            upd_date,
+            upd_time,
+            is_valid,
+            isDelete
+        ) VALUES (
+            #{deal_no},
+            #{borrower_name},
+            #{borrower_type},
+            #{id_type},
+            #{id_no},
+            #{sex},
+            #{birthday},
+            #{borrower_age},
+            #{marital_status},
+            #{industry},
+            #{year_income},
+            #{province},
+            #{province_code},
+            #{address},
+            #{debt_income_per},
+            #{borrower_rating},
+            #{family_status},
+            #{nationality},
+            #{family_address},
+            #{education_level},
+            #{inputuser},
+            #{crt_date},
+            #{crt_time},
+            #{upd_date},
+            #{upd_time},
+            #{is_valid},
+            #{isDelete}
+        );
+    </insert>
+</mapper>
