@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserFastJsonSerializerMapper">
+    <resultMap id="BaseResultMap" type="com.entity.UserFastJsonSerializer">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+    <select id="selectByPrimaryKey" resultType="com.entity.UserFastJsonSerializer">
+        SELECT *
+        from user
+        where id=#{id}
+    </select>
+
+    <select id="selectByPrimaryKey2" resultType="com.entity.UserFastJsonSerializer" resultMap="BaseResultMap">
+        SELECT *
+        from user
+        where id=#{id}
+    </select>
+
+
+    <insert id="insertUser" parameterType="com.entity.UserFastJsonSerializer" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+         INSERT INTO user(`name`,`age`,`insertTime`) VALUES (#{name},#{age},#{insertTime,typeHandler=com.util.MyDateTypeHandler})
+    </insert>
+
+
+    <select id="selectAllUser" resultType="com.entity.UserFastJsonSerializer">
+        SELECT *
+        from USER
+    </select>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.User2Mapper">
+    <resultMap id="BaseResultMap" type="com.entity.User2">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+
+    <select id="selectByPrimaryKey" resultType="com.entity.User2">
+        SELECT *
+        from user2
+        where id=#{id}
+    </select>
+
+    <insert id="insertUser" parameterType="com.entity.User2" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO user2(`name`,`age`) VALUES (#{name},#{age})
+    </insert>
+
+
+    <select id="selectAllUser" resultType="com.entity.User2">
+        SELECT *
+        from USER2
+    </select>
+
+</mapper>
