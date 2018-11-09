@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--导入属性配置 -->
+    <properties resource="properties/mybatis.properties"></properties>
+
+    <!--指定特定数据库的jdbc驱动mysql-connector-java-*.jar包的位置 -->
+    <classPathEntry location="/Users/mac/.m2/repository/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator type="org.zhang.generator.MyCommentGenerator">
+            <!--  true: 关闭自动生成的注释  -->
+            <!--<property name="suppressDate" value="true"/>-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <!--  注意下面的connectionURL="如果直接写url需要将';'->'&amp;'" -->
+        <jdbcConnection
+                driverClass="${driverClassName}"
+                connectionURL="${url}"
+                userId="${username}"
+                password="${password}">
+        </jdbcConnection>
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
+            targetPackage     生成实体类存放的包名, 一般就是放在该包下
+            targetProject     指定在该项目下所在的路径, 使用的是文件系统的绝对路径。
+        -->
+        <javaModelGenerator targetPackage="com.userLogin.entity" targetProject="src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
+        <sqlMapGenerator targetPackage="daoMappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator targetPackage="com.userLogin.dao" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--生成对应表及类名-->
+        <table tableName="user_session_table" domainObjectName="UserSession"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false" enableDeleteByPrimaryKey="false"
+               enableInsert="false" enableUpdateByPrimaryKey="false">
+        </table>
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.userLogin.dao.UserRegisterMapper">
+  <resultMap id="BaseResultMap" type="com.userLogin.entity.UserRegister">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+
+    <select id="selectAllUsers" resultType="com.userLogin.entity.UserRegister">
+        SELECT *
+        FROM user_register
+    </select>
+
+    <select id="selectAllUserName" resultType="java.lang.String">
+        SELECT username
+        FROM user_register
+    </select>
+
+
+    <select id="findUserName" resultType="integer">
+        SELECT 1
+        FROM user_register
+        WHERE username = #{username}
+    </select>
+</mapper>
