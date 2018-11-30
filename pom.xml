@@ -25,6 +25,7 @@
         <module>spring-get-post-data</module>
         <module>spring-redis-cache-base</module>
         <module>spring-redis-cache-protoStuff</module>
+        <module>mySpringTest</module>
     </modules>
 
 

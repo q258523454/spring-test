@@ -34,6 +34,12 @@ public class MyController {
     @Autowired
     SendEmailUti sendEmail;
 
+
+    @RequestMapping(value = "/")
+    public  String index() throws Exception {
+        return "index";
+    }
+
     @RequestMapping(value = "/test")
     public @ResponseBody
     String abc() throws Exception {
@@ -91,6 +97,14 @@ public class MyController {
             userRegisterRes.setRes("notExist");
         }
         return userRegisterRes;
+    }
+
+
+    // 获取图片验证码测试
+    @RequestMapping("/getCheckImageTest")
+    @ResponseBody
+    public void getCheckImageTest(HttpServletRequest request, HttpServletResponse response) {
+        String imgCode = CheckCodeUtil.createImage(request, response);//生成图片验证码
     }
 
     // 获取图片验证码

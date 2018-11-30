@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+>
+
+    <!-- 加载顺序: context-param -> listener -> filter -> servlet -->
+    <display-name>Archetype Created Web Application</display-name>
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+
+    <!-- 为什么加入后,报错找不到application.xml  -->
+    <!--<listener>-->
+    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+
+    <!-- - - - - - - - - - - - - - - - DispatcherServlet BEGIN - - - - - - - - - - - - -->
+    <servlet>
+        <servlet-name>springMVC</servlet-name>
+        <!-- DispatcherServlet 拦截器主要职责: -->
+        <!--1、文件上传解析，如果请求类型是multipart将通过MultipartResolver进行文件上传解析；-->
+        <!--2、通过HandlerMapping，将请求映射到处理器（返回一个HandlerExecutionChain，它包括一个处理器、多个HandlerInterceptor拦截器）；-->
+        <!--3、通过HandlerAdapter支持多种类型的处理器(HandlerExecutionChain中的处理器)；-->
+        <!--4、通过ViewResolver解析逻辑视图名到具体视图实现；-->
+        <!--5、本地化解析；-->
+        <!--6、渲染具体的视图等；-->
+        <!--7、如果执行过程中遇到异常将交给HandlerExceptionResolver来解析。-->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                classpath*:spring/spring-*.xml
+            </param-value>
+        </init-param>
+        <!--在servlet的配置当中，当值为0或者大于0时,标记容器是否在启动的时候就加载这个servlet。正数的值越小，启动该servlet的优先级越高。-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springMVC</servlet-name>
+        <!-- 拦截所有的url -->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- - - - - - - - - - - - - DispatcherServlet END - - - - - - - - - - - - - - - -->
+
+
+</web-app>

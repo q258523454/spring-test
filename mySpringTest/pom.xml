@@ -1,28 +1,31 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>spring-sendMessage-createImageCode</groupId>
-    <artifactId>spring-sendMessage-createImageCode</artifactId>
-    <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>spring-sendMessage-createImageCode</name>
-    <url>http://maven.apache.org</url>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-test</artifactId>
+        <groupId>spring-test</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>spring-test</groupId>
+    <artifactId>mySpringTest</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>mySpringTest Maven Webapp</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <spring.version>4.3.3.RELEASE</spring.version>
     </properties>
 
-
     <dependencies>
-
-        <!-- —————————————————— druid 连接池架包 END —————————————————————————— -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.7</version>
-        </dependency>
-        <!-- —————————————————— druid 连接池架包 END —————————————————————————— -->
 
 
         <!-- —————————————————— log4j  END —————————————————————————— -->
@@ -110,38 +113,6 @@
         <!-- —————————————————— javax架包 END —————————————————————————— -->
 
 
-        <!-- ——————————————————  mysql 架包 BEGIN —————————————————————————— -->
-        <!-- MyBatis底层运用了JDBC，因此需要导入JDBC的MySQL -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.6</version>
-        </dependency>
-        <!-- ——————————————————  mysql 架包 BEGIN —————————————————————————— -->
-
-        <!-- ——————————————————  mybatis 架包 BEGIN —————————————————————————— -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.4.5</version>
-        </dependency>
-
-        <!-- mybatis sql mapping 架包 -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <!-- —————————————————— mybatis 架包 END —————————————————————————— -->
-
-        <!-- —————————————————— mybatis generator 架包 BEGIN —————————————————————————— -->
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.6</version>
-        </dependency>
-        <!-- —————————————————— mybatis generator 架包 END —————————————————————————— -->
-
         <!-- —————————————————— alibaba fastjson 架包 BEGIN —————————————————————————— -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -180,18 +151,10 @@
         </dependency>
         <!-- —————————————————— commons-lang 工具包 END —————————————————————————— -->
 
-        <!-- —————————————————— 发送邮件 Begin —————————————————————————— -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
-        <!-- —————————————————— 发送邮件 END —————————————————————————— -->
-
     </dependencies>
 
     <build>
-        <finalName>springTest</finalName>
+        <finalName>mySpringTest</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
