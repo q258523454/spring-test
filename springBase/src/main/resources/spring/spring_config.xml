@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 这里 bean 的 id 和 class 会以键值对的形式，保存在 IOC 的容器中, 这样我们就可以在 Spring 容器中获取 -->
+    <bean id="teacher" class="entity.Teacher">
+        <property name="tName" value="AlanShleby"/>
+    </bean>
+
+    <bean id="student" class="entity.Student">
+        <property name="sName" value="Mike"/>
+        <property name="age" value="22"/>
+        <property name="teacher" ref="teacher"/>
+    </bean>
+
+</beans>
