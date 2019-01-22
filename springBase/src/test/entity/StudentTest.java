@@ -16,7 +16,6 @@ public class StudentTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring_config.xml");
         Student student = (Student) applicationContext.getBean("student");
         System.out.println(JSONObject.toJSONString(student));
-        System.out.println(student);
     }
 
 }
