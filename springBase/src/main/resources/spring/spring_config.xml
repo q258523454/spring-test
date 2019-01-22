@@ -9,7 +9,7 @@
         <property name="tName" value="AlanShleby"/>
     </bean>
 
-    <bean id="student" class="entity.Student">
+    <bean id="student" class="entity.Student" scope="prototype">
         <property name="sName" value="Mike"/>
         <property name="age" value="22"/>
         <property name="teacher" ref="teacher"/>

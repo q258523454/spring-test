@@ -14,8 +14,10 @@ public class StudentTest {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring_config.xml");
-        Student student = (Student) applicationContext.getBean("student");
-        System.out.println(JSONObject.toJSONString(student));
+        Student student1 = (Student) applicationContext.getBean("student");
+        System.out.println(student1 + ":" + JSONObject.toJSONString(student1));
+        Student student2 = (Student) applicationContext.getBean("student");
+        System.out.println(student2 + ":" + JSONObject.toJSONString(student2));
     }
 
 }
