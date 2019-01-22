@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class TeacherFactoryTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring-factory.xml");
 
         // 动态工厂:高并发的情况下会占用较多的内存
@@ -23,6 +23,7 @@ public class TeacherFactoryTest {
         // 静态工厂
         Teacher teacher2 = (Teacher) applicationContext.getBean("teacher2");
         System.out.println(teacher2 + ":" + JSONObject.toJSONString(teacher2));
+
     }
 
 }

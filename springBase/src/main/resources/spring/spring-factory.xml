@@ -5,9 +5,12 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <!-- 动态工厂 -->
     <bean id="factory" class="factory.TeacherFactory"></bean>
     <bean id="teacher1" class="entity.Teacher" factory-bean="factory" factory-method="createTeacher"></bean>
 
+
+    <!-- 静态工厂 -->
     <bean id="teacher2" class="factory.TeacherFactory" factory-method="createTeacherStatic"></bean>
 
 </beans>
