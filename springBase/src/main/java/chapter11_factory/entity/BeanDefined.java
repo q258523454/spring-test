@@ -1,4 +1,4 @@
-package factory;
+package chapter11_factory.entity;
 
 /**
  * Created By

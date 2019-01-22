@@ -1,6 +1,6 @@
-package factory;
+package chapter11_factory.entity;
 
-import entity.Teacher;
+import chapter10_bean.entity.Teacher;
 
 /**
  * Created By

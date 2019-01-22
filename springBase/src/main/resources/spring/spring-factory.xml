@@ -6,11 +6,11 @@
 
 
     <!-- 动态工厂 -->
-    <bean id="factory" class="factory.TeacherFactory"></bean>
-    <bean id="teacher1" class="entity.Teacher" factory-bean="factory" factory-method="createTeacher"></bean>
+    <bean id="factory" class="chapter11_factory.entity.TeacherFactory"></bean>
+    <bean id="teacher1" class="chapter10_bean.entity.Teacher" factory-bean="factory" factory-method="createTeacher"></bean>
 
 
     <!-- 静态工厂 -->
-    <bean id="teacher2" class="factory.TeacherFactory" factory-method="createTeacherStatic"></bean>
+    <bean id="teacher2" class="chapter11_factory.entity.TeacherFactory" factory-method="createTeacherStatic"></bean>
 
 </beans>

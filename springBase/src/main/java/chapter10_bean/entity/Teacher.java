@@ -1,4 +1,4 @@
-package entity;
+package chapter10_bean.entity;
 
 /**
  * Created By

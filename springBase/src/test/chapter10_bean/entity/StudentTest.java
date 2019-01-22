@@ -1,4 +1,4 @@
-package entity;
+package chapter10_bean.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.context.ApplicationContext;

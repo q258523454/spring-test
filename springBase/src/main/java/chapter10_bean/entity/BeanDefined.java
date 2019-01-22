@@ -1,4 +1,4 @@
-package entity2;
+package chapter10_bean.entity;
 
 /**
  * Created By
@@ -10,8 +10,6 @@ public class BeanDefined {
     private String beanId; // bean的id
 
     private String classPath; // bean的文件路径
-
-    private String scope = "singleton"; // scope模式, 默认为单例
 
     public String getBeanId() {
         return beanId;
@@ -27,13 +25,5 @@ public class BeanDefined {
 
     public void setClassPath(String classPath) {
         this.classPath = classPath;
-    }
-
-    public String getScope() {
-        return scope;
-    }
-
-    public void setScope(String scope) {
-        this.scope = scope;
     }
 }

@@ -1,4 +1,4 @@
-package entity;
+package chapter10_bean.entity;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -18,7 +18,7 @@ public class BeanFactoryTest {
         // 1、声明注册bean
         BeanDefined beanObj = new BeanDefined();
         beanObj.setBeanId("student");
-        beanObj.setClassPath("entity.Student");
+        beanObj.setClassPath("chapter10_bean.entity.Student");
         List<BeanDefined> beanList = new ArrayList<BeanDefined>();
         beanList.add(beanObj);
 

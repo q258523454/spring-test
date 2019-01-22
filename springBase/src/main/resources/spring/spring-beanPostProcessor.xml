@@ -5,14 +5,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 这里 bean 的 id 和 class 会以键值对的形式，保存在 IOC 的容器中, 这样我们就可以在 Spring 容器中获取 -->
-    <bean id="teacher" class="chapter10_bean.entity.Teacher">
-        <property name="tName" value="AlanShleby"/>
-    </bean>
+    <!-- 注册 bean：被监控的实现类 -->
+    <bean id="baseServiceImpl" class="chapter12_BeanPostProcessor.service.impl.BaseServiceImpl"></bean>
+    <bean id="baseServiceImpl2" class="chapter12_BeanPostProcessor.service.impl.BaseServiceImpl2"></bean>
 
-    <bean id="student" class="chapter10_bean.entity.Student" scope="prototype">
-        <property name="sName" value="Mike"/>
-        <property name="age" value="22"/>
-        <property name="teacher" ref="teacher"/>
-    </bean>
-
+    <!-- 注册代理实现类 -->
+    <bean class="chapter12_BeanPostProcessor.utils.MyBeanPostProcessor"></bean>
 </beans>
