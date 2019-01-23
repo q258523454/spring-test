@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 这里 bean 的 id 和 class 会以键值对的形式，保存在 IOC 的容器中, 这样我们就可以在 Spring 容器中获取 -->
+
+    <!-- 注入切点类 -->
+    <bean id="person" class="charpter14_AOP.joincut.impl.Person"></bean>
+    <bean id="beforeAdvice" class="charpter14_AOP.aop.BeforeAdvice"></bean>
+
+    <bean id="personFactory" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!-- 目标对象，为 person 创建一个代理对象 -->
+        <property name="target" ref="person"/>
+        <property name="interceptorNames">
+            <array>
+                <value>beforeAdvice</value>
+            </array>
+        </property>
+    </bean>
+
+</beans>

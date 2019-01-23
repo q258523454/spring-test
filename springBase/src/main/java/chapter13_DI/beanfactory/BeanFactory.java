@@ -41,21 +41,25 @@ public class BeanFactory {
      * @param propertyMap 属性
      */
     public void setValue(Object instance, Class classFile, Map<String, String> propertyMap) throws Exception {
+        
         // 获取当前类文件中所有的方法
         Method[] methods = classFile.getDeclaredMethods();
+
         // 循环遍历 propertyMap
         Set<String> fieldNameSet = propertyMap.keySet();
+        
         Iterator<String> fieldNameIterator = fieldNameSet.iterator();
+        
         while (fieldNameIterator.hasNext()) {
-            String fieldName = fieldNameIterator.next();
-            String value = propertyMap.get(fieldName);
-            Field field = classFile.getDeclaredField(fieldName); // 同名属性对象
-            String methodName = "set" + fieldName;
+            String attributeName = fieldNameIterator.next();
+            String value = propertyMap.get(attributeName);
+            Field field = classFile.getDeclaredField(attributeName); // 同名属性对象
+            String methodName = "set" + attributeName;
             for (int i = 0; i < methods.length; i++) {
                 Method method = methods[i];
                 // 忽略大小写比对方法名是否相同
                 if (methodName.equalsIgnoreCase(method.getName())) {
-                    // 属性所属类型：Integer,String,Double,Boolean,List此处只举个别类型进行演示
+                    // 属性所属类型:Integer,String,Double,Boolean,List此处只举个别类型进行演示
                     Class<?> fieldType = field.getType();
                     if (fieldType == String.class) {
                         method.invoke(instance, value);
