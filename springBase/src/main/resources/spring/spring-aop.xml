@@ -8,6 +8,8 @@
 
     <!-- 注入切点类 -->
     <bean id="person" class="chapter14_AOP.joincut.impl.Person"></bean>
+
+    <!-- 切面 -->
     <bean id="beforeAdvice" class="chapter14_AOP.aop.BeforeAdvice"></bean>
 
     <bean id="personFactory" class="org.springframework.aop.framework.ProxyFactoryBean">
