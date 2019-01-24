@@ -1,6 +1,6 @@
-package charpter14_AOP.joincut.impl;
+package chapter14_AOP.joincut.impl;
 
-import charpter14_AOP.joincut.Animals;
+import chapter14_AOP.joincut.Animals;
 
 /**
  * Created By

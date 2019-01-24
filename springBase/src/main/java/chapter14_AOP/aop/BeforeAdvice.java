@@ -1,4 +1,4 @@
-package charpter14_AOP.aop;
+package chapter14_AOP.aop;
 
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.lang.Nullable;

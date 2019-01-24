@@ -7,8 +7,8 @@
     <!-- 这里 bean 的 id 和 class 会以键值对的形式，保存在 IOC 的容器中, 这样我们就可以在 Spring 容器中获取 -->
 
     <!-- 注入切点类 -->
-    <bean id="person" class="charpter14_AOP.joincut.impl.Person"></bean>
-    <bean id="beforeAdvice" class="charpter14_AOP.aop.BeforeAdvice"></bean>
+    <bean id="person" class="chapter14_AOP.joincut.impl.Person"></bean>
+    <bean id="beforeAdvice" class="chapter14_AOP.aop.BeforeAdvice"></bean>
 
     <bean id="personFactory" class="org.springframework.aop.framework.ProxyFactoryBean">
         <!-- 目标对象，为 person 创建一个代理对象 -->

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 这里 bean 的 id 和 class 会以键值对的形式，保存在 IOC 的容器中, 这样我们就可以在 Spring 容器中获取 -->
+    <!--<bean id="userService" class="chapter15_DI2.service.impl.UserServiceImpl">-->
+    <!--<property name="id" value="001"></property>-->
+    <!--<property name="name" value="Zhang"></property>-->
+    <!--</bean>-->
+
+    <context:component-scan base-package="chapter15_DI2.service"/>
+
+</beans>

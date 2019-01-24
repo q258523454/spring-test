@@ -1,6 +1,6 @@
-package charpter14_AOP.aop;
+package chapter14_AOP.aop;
 
-import charpter14_AOP.joincut.Animals;
+import chapter14_AOP.joincut.Animals;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

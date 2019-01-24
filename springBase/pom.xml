@@ -56,7 +56,12 @@
             <artifactId>spring-aop</artifactId>
             <version>5.0.7.RELEASE</version>
         </dependency>
-
+        <!-- Spring 5.0 expression支持包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
 
         <!-- —————————————————— alibaba fastjson 架包 BEGIN —————————————————————————— -->
         <dependency>
