@@ -1,6 +1,7 @@
-package chapter15_DI2.service.impl;
+package chapter16_DI3.service.impl;
 
-import chapter15_DI2.service.UserService;
+import chapter16_DI3.service.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,13 @@ import org.springframework.stereotype.Service;
 
 
 @Service
+@PropertySource("classpath:properties/user.properties")
 public class UserServiceImpl implements UserService {
 
+    @Value("${id}")
     private String id;
 
+    @Value("${name}")
     private String name;
 
 
