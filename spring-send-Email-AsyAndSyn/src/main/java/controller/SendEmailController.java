@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import util.IEmailSender;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,7 +25,7 @@ public class SendEmailController {
     @Autowired
     IEmailSender sendEmail;
 
-    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET, produces="application/json; charset=utf-8")
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public @ResponseBody
     String sendEmail(HttpServletRequest request, HttpSession session, HttpServletResponse response, String toEmail) {
         JSONObject object = new JSONObject();
@@ -38,10 +37,10 @@ public class SendEmailController {
         String subject = "ZhJ 邮件测试";
         boolean flag = false;
         try {
-            flag=sendEmail.send(null, toEmail, content, subject, true);
+            flag = sendEmail.send(null, toEmail, content, subject, true);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
         }
 
         if (flag) {
@@ -54,7 +53,7 @@ public class SendEmailController {
     }
 
 
-    @RequestMapping(value = "/sendAsyn", method = RequestMethod.GET, produces="application/json; charset=utf-8")
+    @RequestMapping(value = "/sendAsyn", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public @ResponseBody
     String sendAsyn(HttpServletRequest request, HttpSession session, HttpServletResponse response, String toEmail) {
         JSONObject object = new JSONObject();
@@ -64,19 +63,14 @@ public class SendEmailController {
         }
         String content = "您好,这是一封测试邮件,如果非本人操作,请忽略.";
         String subject = "ZhJ 异步邮件测试";
-        boolean flag = false;
         try {
-            flag=sendEmail.sendAsyn(null, toEmail, content, subject, true);
+            sendEmail.sendAsyn(null, toEmail, content, subject, true);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
         }
 
-        if (flag) {
-            object.put("res", "异步邮件发送成功.");
-        } else {
-            object.put("res", "异步邮件发送失败.");
-        }
+        object.put("res", "异步邮件已执行(成功不确定).");
 
         return object.toString();
     }

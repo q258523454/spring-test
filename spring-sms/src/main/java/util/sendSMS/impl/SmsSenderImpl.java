@@ -1,4 +1,4 @@
-package com.userLogin.util;
+package util.sendSMS.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
@@ -7,6 +7,9 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import util.SpringContextHolder;
+import util.StringMD5;
+import util.sendSMS.SmsSender;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,15 +21,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import static com.userLogin.util.StringMD5.*;
 
 /**
  * @author zhang
  */
 @Service
-public class SmsSender {
+public class SmsSenderImpl implements SmsSender {
 
-    private static final Logger logger = LogManager.getLogger(SmsSender.class);
+    private static final Logger logger = LogManager.getLogger(SmsSenderImpl.class);
 
     public final static String CHINA_CODE = "86";
 
@@ -38,6 +40,24 @@ public class SmsSender {
 
     @Value("${sms.send.sms.url}")
     private String sendSmsUrl;
+
+
+    // 检查短信发送结果
+    private static boolean checkSmsResult(String result) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            // objectMapper.readValue 将字符串转换成object对象类
+            Map<String, Object> res = objectMapper.readValue(result, HashMap.class);
+            if ("0".equals(res.get("result"))) {
+                return true;
+            } else {
+                logger.error("" + res.get("errmsg"));
+            }
+        } catch (IOException e) {
+            logger.info(String.format("jackson parse %s error", result), e);
+        }
+        return false;
+    }
 
 
     /**
@@ -52,7 +72,6 @@ public class SmsSender {
         }
 
         if (StringUtils.isEmpty(phoneNumber)) {
-//            phoneNumber = "13266846736";
             throw new IllegalArgumentException("phoneNumber cannot be null");
         }
 
@@ -79,9 +98,7 @@ public class SmsSender {
             tel.put("phone", phoneNumber);      // *必须
 
             Map<String, Object> data = new HashMap();
-            String sig = getStrMD5(appKey.concat(phoneNumber)); // 腾讯短信接口的请求发送sig字段加密策略
-//            sig = getStringMD5(appKey.concat(phoneNumber));
-
+            String sig = StringMD5.getStrMD5(appKey.concat(phoneNumber)); // 腾讯短信接口的请求发送sig字段加密策略
             data.put("tel", tel);       // *必须
             data.put("msg", content);   // *必须
             data.put("sig", sig);       // *必须
@@ -114,19 +131,13 @@ public class SmsSender {
         return false;
     }
 
-    private static boolean checkSmsResult(String result) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            // objectMapper.readValue 将字符串转换成object对象类
-            Map<String, Object> res = objectMapper.readValue(result, HashMap.class);
-            if ("0".equals(res.get("result"))) {
-                return true;
-            }
-        } catch (IOException e) {
-            logger.info(String.format("jackson parse %s error", result), e);
-        }
-        return false;
-    }
 
+    @Override
+    public boolean sendSMS(String telephone, String code, String timeout) throws Exception {
+        // content发送内容，必须与申请的模板格式一致，否则将返回错误
+        String content = String.format("%s为您的登录验证码，请于%s秒内填写。如非本人操作，请忽略本短信", code, timeout);
+        boolean flag = sendSmsUtil(null, telephone, content);
+        return flag;
+    }
 }
 

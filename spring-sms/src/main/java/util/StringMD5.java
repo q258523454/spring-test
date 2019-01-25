@@ -1,4 +1,4 @@
-package com.userLogin.util;
+package util;
 // Created by ZhangJian on 18/3/12.
 
 import java.security.MessageDigest;
