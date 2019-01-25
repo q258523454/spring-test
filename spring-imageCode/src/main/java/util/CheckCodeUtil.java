@@ -1,4 +1,4 @@
-package com.userLogin.util;
+package util;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;

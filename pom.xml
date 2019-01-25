@@ -29,6 +29,7 @@
         <module>mySpringTest</module>
         <module>spring-send-Email-AsyAndSyn</module>
         <module>spring-sms</module>
+        <module>spring-imageCode</module>
     </modules>
 
 
