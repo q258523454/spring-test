@@ -32,3 +32,4 @@ target/
 /src/main/resources/properties/localZhang/
 /src/main/resources/properties/test/
 /src/main/resources/properties/localLineWorkbench/
+/spring-send-Email-AsyAndSyn/src/main/resources/properties/email.properties

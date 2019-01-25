@@ -1,6 +1,7 @@
 package util.impl;
 
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.StringUtils;
 import util.IEmailSender;
@@ -8,6 +9,8 @@ import util.IEmailSender;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.Properties;
+import java.util.PropertyPermission;
 import java.util.concurrent.*;
 
 /**
@@ -63,10 +66,9 @@ public class EmailSenderImpl implements IEmailSender {
             message.setText(content, html);             // 内容
             message.setSentDate(new Date());            // 发送日期
             javaMailSender.send(mimeMessage);           // 发送邮件
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             flag = false;
             e.printStackTrace();
-            //throw new RuntimeException("发送邮件时出现异常！", e);
         } finally {
             return flag;
         }

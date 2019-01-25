@@ -26,23 +26,30 @@ public class SendEmailController {
     @Autowired
     IEmailSender sendEmail;
 
-    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET)
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET, produces="application/json; charset=utf-8")
     public @ResponseBody
     String sendEmail(HttpServletRequest request, HttpSession session, HttpServletResponse response, String toEmail) {
+        JSONObject object = new JSONObject();
 
         if (null == toEmail || toEmail.isEmpty()) {
             toEmail = "258523454@qq.com";
         }
         String content = "您好,这是一封测试邮件,如果非本人操作,请忽略.";
         String subject = "ZhJ 邮件测试";
+        boolean flag = false;
         try {
-            sendEmail.send(null, toEmail, content, subject, true);
+            flag=sendEmail.send(null, toEmail, content, subject, true);
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
         }
 
-        JSONObject object = new JSONObject();
-        object.put("res", "ok"); // 设置有效时间为120s
+        if (flag) {
+            object.put("res", "发送成功.");
+        } else {
+            object.put("res", "发送失败.");
+        }
+
         return object.toString();
     }
 }
