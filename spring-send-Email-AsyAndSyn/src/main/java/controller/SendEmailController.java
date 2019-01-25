@@ -52,4 +52,32 @@ public class SendEmailController {
 
         return object.toString();
     }
+
+
+    @RequestMapping(value = "/sendAsyn", method = RequestMethod.GET, produces="application/json; charset=utf-8")
+    public @ResponseBody
+    String sendAsyn(HttpServletRequest request, HttpSession session, HttpServletResponse response, String toEmail) {
+        JSONObject object = new JSONObject();
+
+        if (null == toEmail || toEmail.isEmpty()) {
+            toEmail = "258523454@qq.com";
+        }
+        String content = "您好,这是一封测试邮件,如果非本人操作,请忽略.";
+        String subject = "ZhJ 异步邮件测试";
+        boolean flag = false;
+        try {
+            flag=sendEmail.sendAsyn(null, toEmail, content, subject, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+        }
+
+        if (flag) {
+            object.put("res", "异步邮件发送成功.");
+        } else {
+            object.put("res", "异步邮件发送失败.");
+        }
+
+        return object.toString();
+    }
 }
