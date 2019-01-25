@@ -8,7 +8,6 @@ import com.userLogin.service.UserRegisterService;
 import com.userLogin.service.UserSessionService;
 import com.userLogin.util.CheckCodeUtil;
 import com.userLogin.util.SMSUtil;
-import com.userLogin.util.SendEmailUti;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +30,9 @@ public class MyController {
     @Autowired
     UserSessionService userSessionService;
 
-    @Autowired
-    SendEmailUti sendEmail;
-
 
     @RequestMapping(value = "/")
-    public  String index() throws Exception {
+    public String index() throws Exception {
         return "index";
     }
 
@@ -218,39 +214,6 @@ public class MyController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return object.toString();
-    }
-
-
-    @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
-    public @ResponseBody
-    String sendEmail(HttpServletRequest request, HttpSession session, HttpServletResponse response, String toEmail) {
-        //获取 sessionid
-        Cookie[] cookies = request.getCookies();
-        String jsessionid = null;
-
-        if (cookies != null) {
-            for (Cookie c : cookies)
-                if (c.getName().equals("C_USER")) {
-                    jsessionid = c.getValue();
-                    break;
-                }
-        }
-
-        if (null == toEmail || toEmail.isEmpty()) {
-            toEmail = "258523454@qq.com";
-        }
-
-        String content = "您好,这是一封测试邮件,如果非本人操作,请忽略.";
-        String subject = "ZhJ 邮件测试";
-        try {
-            sendEmail.send(null, toEmail, content, subject, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        JSONObject object = new JSONObject();
-        object.put("res", "ok"); // 设置有效时间为120s
         return object.toString();
     }
 }

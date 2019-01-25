@@ -27,6 +27,7 @@
         <module>spring-redis-cache-base</module>
         <module>spring-redis-cache-protoStuff</module>
         <module>mySpringTest</module>
+        <module>spring-send-Email-AsyAndSyn</module>
     </modules>
 
 
@@ -198,14 +199,6 @@
             <version>2.4</version>
         </dependency>
         <!-- —————————————————— commons-lang 工具包 END —————————————————————————— -->
-
-        <!-- —————————————————— 发送邮件 Begin —————————————————————————— -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
-        <!-- —————————————————— 发送邮件 END —————————————————————————— -->
 
         <!-- —————————————————— HttpPost 架包 BEGIN —————————————————————————— -->
         <dependency>

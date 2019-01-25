@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"-->
+          <!--p:defaultEncoding="${p_defaultEncoding}"-->
+          <!--p:host="${p_host}"-->
+          <!--p:username="${p_username}"-->
+          <!--p:password="${p_password}"-->
+          <!--p:port="${p_port}"-->
+          <!--p:javaMailProperties="classpath:properties/email.properties"/>-->
+
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="defaultEncoding" value="${p_defaultEncoding}"/>
+        <property name="host" value="${p_host}"/>
+        <property name="username" value="${p_username}"/>
+        <property name="password" value="${p_password}"/>
+        <property name="port" value="${p_port}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <!-- 超时时间 -->
+                <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="emailSender" class="util.impl.EmailSenderImpl"
+          p:javaMailSender-ref="javaMailSender"
+          p:from="${p_username}"/>
+
+</beans>

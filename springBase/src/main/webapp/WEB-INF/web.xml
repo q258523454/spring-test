@@ -33,7 +33,7 @@
     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
         <!-- 为什么url-pattern配置/*会报错？原因是它拦截了jsp请求，但是却不能处理jsp请求，详见图解 -->
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
 
