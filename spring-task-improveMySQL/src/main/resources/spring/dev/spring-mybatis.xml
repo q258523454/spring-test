@@ -44,9 +44,21 @@
         <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
     </bean>
 
+
     <!--4、配置扫描Dao接口包,动态实现DAO接口,注入到spring容器-->
+    <!-- 方式一: 配置Mapper代理对象 MapperFactoryBean（了解） -->
+    <!-- 通过MapperFactoryBean生成的代理对象，一次只能针对一个接口进行生成 -->
+    <!--<bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+        <property name="mapperInterface" value="top.alanshelby.mapper.AccountMapper"></property>
+    </bean>-->
+
+    <!-- 方式二: 配置Mapper代理对象：MapperScannerConfigurer -->
+    <!-- 批量代理对象的生成 -->
+    <!-- 注意事项：mapper接口类和mapper映射文件同包同名 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--注入SqlSessionFactory-->
+        <!-- 注意事项：千万不要配置SqlSessionFactory，要配置sqlSessionFactoryBeanName -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描的Dao接口-->
         <property name="basePackage" value="com.dao"/>
