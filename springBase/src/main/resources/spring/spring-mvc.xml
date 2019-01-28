@@ -7,4 +7,10 @@
 
 
     <context:component-scan base-package="chapter22_MVC.controller"/>
+
+
+    <!-- 配置自定义异常处理类 -->
+    <context:component-scan base-package="chapter27_Exception.controller"/>
+    <bean class="chapter27_Exception.controller.CustomExceptionResolver"></bean>
+
 </beans>
