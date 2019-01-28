@@ -29,7 +29,7 @@ public class ExceptionTestController {
         }
         // 抛出一个自定义异常
         if ("1".equals(test)) {
-            throw new CustomException("这是一个自定义异常！");
+            throw new CustomException("这是一个自定义CustomException异常！");
         }
         model.addAttribute("msg", "It is Ok!");
         return "WEB-INF/jsp/exception/custom.jsp";

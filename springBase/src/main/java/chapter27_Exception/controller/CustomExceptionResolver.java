@@ -20,7 +20,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
         if (ex instanceof CustomException) {
             msg = ((CustomException) ex).getMsg();
         } else {
-            msg = "unknown error";
+            msg = ex.getMessage();
         }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("msg", msg);
