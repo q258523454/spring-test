@@ -30,6 +30,7 @@
         <module>spring-send-Email-AsyAndSyn</module>
         <module>spring-sms</module>
         <module>spring-imageCode</module>
+        <module>spring-bean-lifetime</module>
     </modules>
 
 
