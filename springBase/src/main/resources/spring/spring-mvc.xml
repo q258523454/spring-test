@@ -23,7 +23,7 @@
         <mvc:interceptor>
             <!-- /**表示所有URL和子URL路径 -->
             <mvc:mapping path="/**"/>
-            <bean class="chapter27_Interceptor.interceptor.LoginInterceptor"/>
+            <bean class="chapter27_Interceptor.interceptor.UserUpdateInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>
