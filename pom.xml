@@ -33,6 +33,7 @@
         <module>spring-bean-lifetime</module>
         <module>spring-authorized-controller</module>
         <module>spring-authorized-controller</module>
+        <module>spring-aes-base64</module>
     </modules>
 
 

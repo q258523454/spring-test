@@ -1,9 +1,8 @@
 package JavaTest;
 
-import com.alibaba.fastjson.JSONObject;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 
 /**
  * Created by
@@ -14,21 +13,11 @@ import javax.mail.internet.InternetAddress;
 
 public class Test {
 
-    public static void main(String[] args) {
-
-        System.out.println(isValidEmailAddress("2585234@54@qq.com"));
-
-    }
-
-
-    public static boolean isValidEmailAddress(String email) {
-        boolean isValidate = true;
-        try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
-        } catch (AddressException ex) {
-            isValidate = false;
-        }
-        return isValidate;
+    public static void main(String[] args) throws Exception {
+        String encryptionKey = "123";
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] key = md.digest(encryptionKey.getBytes("UTF-8"));
+        String a = new String(key,"UTF-8");
+        System.out.println(a);
     }
 }

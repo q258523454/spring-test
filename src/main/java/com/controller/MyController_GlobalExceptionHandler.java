@@ -13,7 +13,7 @@ public class MyController_GlobalExceptionHandler {
 
     // 拦截器配置路径: java/com/util/GlobalExceptionHandler.java
 
-    @RequestMapping(value = "/NullPointerException", method = RequestMethod.GET)
+    @RequestMapping(value = "/NullPointerqException", method = RequestMethod.GET)
     public @ResponseBody
     String NullPointerException() throws Exception {
         throw new NullPointerException();
