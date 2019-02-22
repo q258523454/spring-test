@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+
+    <resultMap id="userResultMap" type="com.entity.User">
+        <result column="regTime" jdbcType="VARCHAR" property="regTime" typeHandler="com.util.MyBatisTypeHander_DateToString"></result>
+    </resultMap>
+
+    <select id="getUser" resultType="com.entity.User" resultMap="userResultMap">
+        select * from user_type_handler
+    </select>
+
+    <insert id="insertUser">
+        INSERT INTO user_type_handler(
+        username,
+        password,
+        regTime
+        ) VALUES (
+        #{username},#{password},
+        #{regTime,typeHandler=com.util.MyBatisTypeHander_DateToString}
+        )
+    </insert>
+
+</mapper>

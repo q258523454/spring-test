@@ -1,0 +1,13 @@
+CREATE TABLE `user_type_handler` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`username` varchar(255) DEFAULT NULL,
+`password` int(11) DEFAULT NULL,
+`regTime` varchar(100) DEFAULT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `person` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`interest` varchar(100) DEFAULT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
