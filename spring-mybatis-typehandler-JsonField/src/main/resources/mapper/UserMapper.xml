@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserMapper">
 
-    <resultMap id="userResultMap" type="com.entity.User">
+    <resultMap id="userResultMap" type="com.entity.Student">
         <result column="regTime" jdbcType="VARCHAR" property="regTime" typeHandler="com.util.MyBatisTypeHander_DateToString"></result>
     </resultMap>
 
-    <select id="getUser" resultType="com.entity.User" resultMap="userResultMap">
+    <select id="getUser" resultType="com.entity.Student" resultMap="userResultMap">
         select * from user_type_handler
     </select>
 

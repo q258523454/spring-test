@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.UserMapper">
+<mapper namespace="com.dao.StudentMapper">
 
-    <select id="getUser" resultType="com.entity.User">
-        select * from user_transaction
+    <select id="selectAllStudent" resultType="com.entity.Student">
+        select * from student_transaction
     </select>
 
-    <insert id="insertUser">
-        INSERT INTO user_transaction(
+    <insert id="insertStudent">
+        INSERT INTO student_transaction(
         username,
         password,
         regTime

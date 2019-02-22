@@ -5,7 +5,7 @@
 <configuration>
     <properties resource="properties/jdbc.properties"/>
     <typeAliases>
-        <typeAlias type="com.entity.User" alias="user"/>
+        <typeAlias type="com.entity.Student" alias="user"/>
         <typeAlias type="com.entity.Person" alias="person"/>
     </typeAliases>
         <!--<package name="org.sang.db"/>-->
