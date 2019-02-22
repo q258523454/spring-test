@@ -35,6 +35,7 @@
         <module>spring-authorized-controller</module>
         <module>spring-aes-base64</module>
         <module>spring-mybatis-typehandler-JsonField</module>
+        <module>spring-mvc-transaction</module>
     </modules>
 
 
