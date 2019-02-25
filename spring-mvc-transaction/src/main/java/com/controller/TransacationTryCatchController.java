@@ -11,6 +11,7 @@ import com.util.MultiByZero;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +60,26 @@ public class TransacationTryCatchController {
         } catch (Exception e) {
             e.printStackTrace();
             return "0";
+        }
+        return "1";
+    }
+
+
+    // 有效, 虽然没有抛出检查异常, 但是用 TransactionAspectSupport 手动回滚了事务
+    @Transactional
+    @RequestMapping(value = "/transactionTryCatchThrowCheckExceptionA", method = RequestMethod.GET)
+    public String transactionTryCatchThrowCheckExceptionA() throws FileNotFoundException {
+        try {
+            Student student = new Student("student_transactionOrg", "123", new Date());
+            Teacher teacher = new Teacher("teacher_transactionOrg", "123", new Date());
+            System.out.println(JSONObject.toJSONString(student));
+            System.out.println(JSONObject.toJSONString(teacher));
+            studentService.insertStudent(student); // ①
+            FileInputStream fileInputStream = new FileInputStream("/Mac/no.txt");
+            teacherService.insertTeacher(teacher); // ②
+        } catch (Exception e) {
+            e.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
         return "1";
     }
