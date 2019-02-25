@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileInputStream;
 import java.util.Date;
 
 /**
@@ -67,6 +68,35 @@ public class TransacationController {
         teacherService.insertTeacher(teacher); // ②
         return "1";
     }
+
+    // 默认为运行时异常回归, 检查异常,如IOException, 则无效
+    @Transactional
+    @RequestMapping(value = "/transactionOrgIOException", method = RequestMethod.GET)
+    public String transactionOrgIOException() throws Exception {
+        Student student = new Student("transactionOrgIOException", "123", new Date());
+        Teacher teacher = new Teacher("transactionOrgIOException", "123", new Date());
+        System.out.println(JSONObject.toJSONString(student));
+        System.out.println(JSONObject.toJSONString(teacher));
+        studentService.insertStudent(student); // ①
+        FileInputStream fileInputStream = new FileInputStream("/User/no.txt");
+        teacherService.insertTeacher(teacher); // ②
+        return "1";
+    }
+
+    // 默认为运行时异常回滚, 检查异常,如IOException, 则无效, 修改事务rollbackFor的级别为Exception.class, 有效
+    @Transactional(rollbackFor = Exception.class)
+    @RequestMapping(value = "/transactionOrgIOException2", method = RequestMethod.GET)
+    public String transactionOrgIOException2() throws Exception {
+        Student student = new Student("transactionOrgIOException2", "123", new Date());
+        Teacher teacher = new Teacher("transactionOrgIOException2", "123", new Date());
+        System.out.println(JSONObject.toJSONString(student));
+        System.out.println(JSONObject.toJSONString(teacher));
+        studentService.insertStudent(student); // ①
+        FileInputStream fileInputStream = new FileInputStream("/User/no.txt");
+        teacherService.insertTeacher(teacher); // ②
+        return "1";
+    }
+
 
     // 通过普通方法调用事务注解的方法,无效
     @RequestMapping(value = "/callOwnTransMethod", method = RequestMethod.GET)
