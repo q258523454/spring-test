@@ -210,7 +210,7 @@ public class TransacationControllerPropagation {
         studentMapper.insertStudent(student); // ① 不回滚
         teacherMapper.insertTeacher(teacher); // ② 不回滚
         try {
-            // REQUIRED(默认), 即使捕获了异常, 也一样全部回滚(回滚整个事务)
+            // REQUIRED(默认), 即使捕获了异常, 也回滚(回滚嵌套事务)
             transactionalService.publicMethod_NESTED();  // ③ 回滚, 效果等价于REQUIRED_NEW
         } catch (Exception e) {
             e.printStackTrace();

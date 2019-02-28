@@ -15,14 +15,15 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
     public MyBeanFactoryPostProcessor() {
         super();
-        System.out.println("【BeanFactoryPostProcessor】实现类构造器！！");
+        System.out.println("【BeanFactoryPostProcessor】构造器");
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        System.out.println("【BeanFactoryPostProcessor】调用{postProcessBeanFactory}方法");
         // BeanFactoryPostProcessor这里赋值，在bean没有初始化之前?
         BeanDefinition bd = configurableListableBeanFactory.getBeanDefinition("person");
-        bd.getPropertyValues().addPropertyValue("age", "109");
+        System.out.println(" Person Bean 配置实例化:name" + bd.getPropertyValues().get("name") + ",age=" + bd.getPropertyValues().get("age"));
+        System.out.println("【BeanFactoryPostProcessor】{postProcessBeanFactory}:修改Person.age的值为:26");
+        bd.getPropertyValues().addPropertyValue("age", "26");
     }
 }

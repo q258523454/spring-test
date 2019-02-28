@@ -6,14 +6,16 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <bean id="beanFactoryPostProcessor" class="entity.MyBeanFactoryPostProcessor"></bean>
+
     <bean id="beanPostProcessor" class="entity.MyBeanPostProcessor"></bean>
 
     <bean id="instantiationAwareBeanPostProcessor" class="entity.MyInstantiationAwareBeanPostProcessor"></bean>
 
-    <bean id="beanFactoryPostProcessor" class="entity.MyBeanFactoryPostProcessor"></bean>
 
     <bean id="person" class="entity.Person" init-method="myInit" destroy-method="myDestory" scope="singleton"
-          p:name="张三">
+          p:name="张三"
+          p:age="100">
     </bean>
 
 </beans>

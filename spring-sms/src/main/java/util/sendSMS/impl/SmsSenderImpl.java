@@ -7,7 +7,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import util.SpringContextHolder;
 import util.StringMD5;
 import util.sendSMS.SmsSender;
 
