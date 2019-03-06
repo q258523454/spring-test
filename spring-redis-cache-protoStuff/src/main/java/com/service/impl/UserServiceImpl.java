@@ -1,7 +1,7 @@
 package com.service.impl;
 
-import com.dao.UserMapper;
-import com.entity.User;
+import com.dao.MyUserMapper;
+import com.entity.MyUser;
 import com.service.UserService;
 import com.util.RedisCacheMulti;
 import org.apache.log4j.Logger;
@@ -21,7 +21,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private MyUserMapper userMapper;
 
     @Autowired
     private RedisCacheMulti redisCacheMulti;
@@ -30,27 +30,11 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User selectUserByIdOrg(int id) {
-        String cache_key = RedisCacheMulti.CAHCENAME + "|getUserOrg";
-        User result_cache = (User) redisCacheMulti.getCacheOrg(cache_key);
-        if (result_cache == null) {
-            result_cache = userMapper.selectByPrimaryKey(id);
-            redisCacheMulti.putCacheOrg(cache_key, result_cache);
-            logger.info("put cache with key:" + cache_key);
-        } else {
-            logger.info("get cache with key:" + cache_key);
-        }
-        return result_cache;
-    }
-
-
-    @Override
-    public List<User> selectAllUserOrg() {
+    public List<MyUser> selectAllUserOrg() {
         String cache_key = RedisCacheMulti.CAHCENAME + "|getUserListOrg";
         //先去缓存中取
-        List<User> result_cache = (List<User>) redisCacheMulti.getListCacheOrg(cache_key);
+        List<MyUser> result_cache = (List<MyUser>) redisCacheMulti.getListCacheOrg(cache_key);
         if (result_cache == null) {
-            //缓存中没有再去数据库取，并插入缓存（缓存时间为60秒）
             result_cache = userMapper.selectAllUser();
             redisCacheMulti.putListCacheOrg(cache_key, result_cache);
             logger.info("put cache with key:" + cache_key);
@@ -62,34 +46,17 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User selectUserByIdPro(int id) {
-        String cache_key = RedisCacheMulti.CAHCENAME + "|getUserPro";
-        //先去缓存中取
-        User result_cache = redisCacheMulti.getCachePro(cache_key, User.class);
-        if (result_cache == null) {
-            //缓存中没有再去数据库取，并插入缓存（缓存时间为60秒）
-            result_cache = userMapper.selectByPrimaryKey(id);
-            redisCacheMulti.putCacheProWithExpireTime(cache_key, result_cache, RedisCacheMulti.CAHCETIME);
-            logger.info("put cache with key:" + cache_key);
-        } else {
-            logger.info("get cache with key:" + cache_key);
-        }
-        return result_cache;
-    }
-
-
-    @Override
-    public List<User> selectAllUserPro() {
+    public List<MyUser> selectAllUserPro() {
         String cache_key = RedisCacheMulti.CAHCENAME + "|getUserListPro";
         //先去缓存中取
-        List<User> result_cache = redisCacheMulti.getListCachePro(cache_key, User.class);
+        List<MyUser> result_cache = redisCacheMulti.getListCachePro(cache_key, MyUser.class);
         if (result_cache == null) {
             //缓存中没有再去数据库取，并插入缓存（缓存时间为60秒）
             result_cache = userMapper.selectAllUser();
             redisCacheMulti.putListCacheProWithExpireTime(cache_key, result_cache, RedisCacheMulti.CAHCETIME);
-            logger.info("put cache with key:" + cache_key);
+            logger.info("缓存不存在,添加. put cache with key:" + cache_key);
         } else {
-            logger.info("get cache with key:" + cache_key);
+            logger.info("缓存已存在,查询. get cache with key:" + cache_key);
         }
         return result_cache;
     }

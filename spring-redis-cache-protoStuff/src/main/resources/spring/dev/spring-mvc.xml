@@ -33,12 +33,5 @@
         </property>
     </bean>
 
-    <!-- mapping="拦截请求后缀" location="对应资源路径" 否则页面无法加载资源-->
-    <mvc:default-servlet-handler/>
-    <mvc:resources mapping="/images/**" location="/html/images/"/>
-    <mvc:resources mapping="/fonts/**" location="/html/fonts/"/>
-    <mvc:resources mapping="/css/**" location="/html/css/"/>
-    <mvc:resources mapping="/js/**" location="/html/js/"/>
-
 
 </beans>

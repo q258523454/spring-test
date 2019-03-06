@@ -61,6 +61,7 @@ public class RedisCacheMulti {
             }
         });
         if (result == null) {
+            System.out.println("getCachePro()缓存不存在");
             return null;
         }
         return ProtoStuffSerializerUtil.deserialize(result, targetClass);
@@ -142,7 +143,6 @@ public class RedisCacheMulti {
         System.out.println("加入缓存");
         System.out.println("put key:" + key);
         System.out.println("put value:" + value);
-
         final byte[] keyb = key.toString().getBytes();
         final byte[] valueb = OriginalSerializeUtil.serialize(value);
         boolean result = redisTemplate.execute(new RedisCallback<Boolean>() {
@@ -160,7 +160,6 @@ public class RedisCacheMulti {
         System.out.println("加入缓存");
         System.out.println("put key:" + key);
         System.out.println("put value:" + value);
-
         final byte[] keyb = key.toString().getBytes();
         final byte[] valueb = OriginalSerializeUtil.serialize(value);
         boolean result = redisTemplate.execute(new RedisCallback<Boolean>() {
@@ -184,7 +183,7 @@ public class RedisCacheMulti {
                 byte[] key = keyf.getBytes();
                 byte[] value = connection.get(key);
                 if (value == null) {
-                    System.out.println(keyf + " 缓存不存在.");
+                    System.out.println(keyf + "getCacheOrg().缓存不存在.");
                     return null;
                 } else {
                     return OriginalSerializeUtil.unserialize(value);

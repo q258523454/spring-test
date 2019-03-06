@@ -1,6 +1,7 @@
 package com.service;
 
-import com.entity.User;
+
+import com.entity.MyUser;
 
 import java.util.List;
 
@@ -13,13 +14,8 @@ import java.util.List;
 
 public interface UserService {
 
+    public List<MyUser> selectAllUserPro();
 
-    public User selectUserByIdOrg(int id);
-
-    public User selectUserByIdPro(int id);
-
-    public List<User> selectAllUserPro();
-
-    public List<User> selectAllUserOrg();
+    public List<MyUser> selectAllUserOrg();
 
 }

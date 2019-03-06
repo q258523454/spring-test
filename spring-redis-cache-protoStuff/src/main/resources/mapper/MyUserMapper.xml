@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.MyUserMapper">
-    <resultMap id="BaseResultMap" type="com.entity.Student">
+    <resultMap id="BaseResultMap" type="com.entity.MyUser">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="age" jdbcType="INTEGER" property="age"/>
     </resultMap>
 
 
-    <select id="selectByPrimaryKey" resultType="com.entity.Student">
+    <select id="selectByPrimaryKey" resultType="com.entity.MyUser">
         SELECT *
         from user
         where id=#{id}
     </select>
 
-    <select id="selectMaxKeyUser" resultType="com.entity.Student">
+    <select id="selectMaxKeyUser" resultType="com.entity.MyUser">
         SELECT *
         FROM USER
         WHERE id = (
@@ -23,7 +23,7 @@
         )
     </select>
 
-    <insert id="insertUser" parameterType="com.entity.Student" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    <insert id="insertUser" parameterType="com.entity.MyUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO user(`name`,`age`) VALUES (#{name},#{age})
     </insert>
 
@@ -33,7 +33,7 @@
         where id=#{id}
     </delete>
 
-    <select id="selectAllUser" resultType="com.entity.Student">
+    <select id="selectAllUser" resultType="com.entity.MyUser">
         SELECT *
         from USER
     </select>

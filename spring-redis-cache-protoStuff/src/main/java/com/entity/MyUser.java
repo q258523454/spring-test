@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 // 注意这里一定要实现 Serializable, 否则无法序列化 User 类
-public class User implements Serializable {
+public class MyUser implements Serializable {
 
     private int id;
 
