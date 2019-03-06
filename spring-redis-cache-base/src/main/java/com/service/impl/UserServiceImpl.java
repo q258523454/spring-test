@@ -28,14 +28,17 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectMaxKeyUser();
     }
 
-    // 首先在缓存中查找,如果没有, 则执行方法并缓存结果，然后返回数据
+
+
+
+    // 首先在缓存中查找,如果没有, 则执行方法并缓存结果，然后返回数据, 方法实现对应于util.RedisCache.get()
     @Cacheable(value = "mySringCache", key = "'id_'+#id")
     public User selectByPrimaryKey(Integer id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
 
-    // 先执行方法，然后将返回值放回缓存。可以用作缓存的更新
+    // 先执行方法，然后将返回值放回缓存。可以用作缓存的更新.方法实现对应于util.RedisCache.put()
     @CachePut(value = "mySringCache", key = "'id_'+#user.getId()")
     public User insertSelective(User user) {
         // useGeneratedKeys="true", 下面的 user.id 按照数据递增
