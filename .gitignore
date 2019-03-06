@@ -35,3 +35,5 @@ target/
 /spring-send-Email-AsyAndSyn/src/main/resources/properties/email.properties
 /spring-sms/src/main/resources/properties/SMS.properties
 /absdata-servers-log/
+/spring-redis-cache-base/src/main/resources/spring/test/
+/spring-redis-cache-base/src/main/resources/properties/test/
