@@ -35,9 +35,9 @@ public class MyController {
 
     // application/json; charset=UTF-8 防止中文乱码
     @RequestMapping(value = "/selectAllUserPro", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
-    public String selectAllUserPro(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody
+    String selectAllUserPro(HttpServletRequest request, HttpServletResponse response) {
         List<MyUser> myUserList = userService.selectAllUserPro();
         return JSONObject.toJSONString(myUserList);
-
     }
 }

@@ -36,6 +36,7 @@
         <module>spring-mybatis-typehandler-JsonField</module>
         <module>spring-mvc-transaction</module>
         <module>spring-redis-cache-base</module>
+        <module>spring-session-cookies</module>
     </modules>
 
 
