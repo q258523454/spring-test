@@ -37,6 +37,7 @@
         <module>spring-mvc-transaction</module>
         <module>spring-redis-cache-base</module>
         <module>spring-session-cookies</module>
+        <module>spring-mongodb</module>
     </modules>
 
 
