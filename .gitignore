@@ -24,16 +24,3 @@ hs_err_pid*
 *.iml
 .idea/
 target/
-/src/main/resources/spring/localZhang/
-/src/main/resources/spring/test/
-/src/main/resources/spring/localLineWorkbench/
-/src/main/resources/spring/testLineWorkbench/
-/src/main/resources/properties/testLineWorkbench/
-/src/main/resources/properties/localZhang/
-/src/main/resources/properties/test/
-/src/main/resources/properties/localLineWorkbench/
-/spring-send-Email-AsyAndSyn/src/main/resources/properties/email.properties
-/spring-sms/src/main/resources/properties/SMS.properties
-/absdata-servers-log/
-/spring-redis-cache-base/src/main/resources/spring/test/
-/spring-redis-cache-base/src/main/resources/properties/test/
